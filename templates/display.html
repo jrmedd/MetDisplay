@@ -1,0 +1,21 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Tram timetable – {{ stop|title }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  </head>
+  <body>
+    <table id="timetable">
+      {{ timetable | safe }}
+    </table>
+    <script src="{{ url_for('static', filename='jquery.min.js') }}"></script>
+    <script>
+    window.setInterval(function(){
+      $.get(document.origin+'/timetable/{{stop}}'+location.search, function(data) { //grab the latest timetable
+  	     $("#timetable").html($.parseHTML(data)); //stick the data into a table
+       });
+    }, 30000);//do it every 30 seconds
+    </script>
+  </body>
+</html>

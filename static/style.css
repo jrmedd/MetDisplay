@@ -1,0 +1,31 @@
+@font-face {
+  font-family: 'Dot Matrix';
+  src: url('Dotmatrx.ttf');
+}
+
+body {
+  font-family: 'Dot Matrix';
+  background-color: #101010;
+}
+
+#timetable {
+  font-size: 4em;
+  width : 100%;
+  color: orange;
+  text-shadow: 1px 1px 2px  orange;
+  line-height: 1.5em;
+}
+
+.departure-destination {
+  text-align: left;
+
+}
+
+.departure-wait {
+  letter-spacing: .15em;
+  text-align: right;
+}
+
+.departure-carriages {
+  display: none;
+}
