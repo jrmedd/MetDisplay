@@ -8,6 +8,6 @@ I find Manchester's Metrolink service to be one of the most frustrating daily ex
 
 I use [Flask](http://flask.pocoo.org/docs/0.12/quickstart/) to run the application, displaying only the variety of information found on the displays on the tramstops. This information is reloaded (using AJAX) every 30 seconds.
 
-When I started writing this, I had no idea there was an API available for this info, so I had to scrape the data from TFGM's live departures page using [http://docs.python-requests.org/en/master/](http://docs.python-requests.org/en/master/)/[BeautifulSoup](https://www.crummy.com/software/BeautifulSoup/). This still works if you run the app and go to http://127.0.0.1:5000/display/MediaCityUK.
+When I started writing this, I had no idea there was an API available for this info, so I had to scrape the data from TFGM's live departures page using [Requests](http://docs.python-requests.org/en/master/)/[BeautifulSoup](https://www.crummy.com/software/BeautifulSoup/). This still works if you run the app and go to http://127.0.0.1:5000/display/MediaCityUK.
 
-If you want to make use of the API, get a key from https://developer.tfgm.com/ and create an environment variable called 'TFGM_API'. By appending '''?api=anything''' to the aforementioned display URL, you'll get a table for each LED board at that station.
+If you want to make use of the API, get a key from https://developer.tfgm.com/ and create an environment variable called 'TFGM_API'. By appending ***?api=anything*** to the aforementioned display URL, you'll get a table for each LED board at that station.
