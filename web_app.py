@@ -7,6 +7,10 @@ APP = Flask(__name__)
 
 TFGM_API_KEY = os.environ.get('TFGM_API') #API subscription key available from developer.tfgm.com
 API_HEADER = {'Ocp-Apim-Subscription-Key':TFGM_API_KEY} #the http header for requesting data
+API_URL = "https://api.tfgm.com/odata/Metrolinks?$filter=StationLocation eq '%s'" #includes station
+SCRAPE_URL = "https://tfgm.com/public-transport/tram/stops/%s-tram"
+
+TABLE_ROW = '<tr><td class="departure-destination">%s</td><td class="departure-wait">%s</td></tr>'
 
 @APP.route('/display/<stop>')
 def display(stop):
@@ -21,7 +25,7 @@ def fetch_timetable(stop):
     return timetable
 
 def scrape_timetable(stop):
-    stop_url = "https://tfgm.com/public-transport/tram/stops/%s-tram" % (stop.lower().replace(' ', '-')) #TFGM's url convention for tram stops
+    stop_url = SCRAPE_URL % (stop.lower().replace(' ', '-')) #TFGM's url convention for tram stops
     page = requests.get(stop_url) #load the page
     soup = BeautifulSoup(page.text, "lxml") #parse the HTML
     table = soup.find('table', attrs={'id':'departures-data'}) #find the departures table
@@ -29,9 +33,9 @@ def scrape_timetable(stop):
     return table_body #return it as a string
 
 def api_timetable(stop):
-    results = requests.get("https://api.tfgm.com/odata/Metrolinks?$filter=StationLocation eq '%s'" % (stop), headers=API_HEADER) #get all Metrolink board times
+    results = requests.get(API_URL % (stop), headers=API_HEADER) #get all Metrolink board times
     boards = results.json().get('value') #create an list of boards per stop
-    boards = {board.get('AtcoCode'):board for board in boards}.values() #filter out duplicate boards per platform using the Atco codes
+    boards = {board.get('AtcoCode'):board for board in boards}.values() #filter duplicate boards
     table = "" #create empty table string to pass to browser
     for board in boards:
         table += '<tbody>'#start a new tbody per board
@@ -43,7 +47,7 @@ def api_timetable(stop):
             else:
                 wait = status # otherwise display the status
             if destination:
-                table += '<tr><td class="departure-destination">%s</td><td class="departure-wait">%s</td></tr>' % (destination, wait) # make the row
+                table += TABLE_ROW % (destination, wait) # make the row
         table += '</tbody>' #end the tbody
     return table
 
