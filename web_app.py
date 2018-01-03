@@ -28,7 +28,6 @@ def scrape_timetable(stop):
     table_body = table.find('tbody') #grab the table's body
     return table_body #return it as a string
 
-@app.route('/api_timetable/<stop>')
 def api_timetable(stop):
     results = requests.get("https://api.tfgm.com/odata/Metrolinks?$filter=StationLocation eq '%s'" % (stop),headers=api_header) #get all Metrolink board times
     boards = results.json().get('value') #create an list of boards per stop
