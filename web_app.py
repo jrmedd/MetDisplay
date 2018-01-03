@@ -30,11 +30,8 @@ def scrape_timetable(stop):
 
 @app.route('/api_timetable/<stop>')
 def api_timetable(stop):
-    results = requests.get("https://api.tfgm.com/odata/Metrolinks",headers=api_header) #get all Metrolink board times
-    boards = [] #create an empty list for boards per stop
-    for result in results.json().get('value'): #iterate over every station
-        if stop.lower().replace(' ','') in result.get('StationLocation').lower().replace(' ',''): #match names (whitespace/case ignored)
-            boards.append(result) #add to boards
+    results = requests.get("https://api.tfgm.com/odata/Metrolinks?$filter=StationLocation eq '$s'" % (stop),headers=api_header) #get all Metrolink board times
+    boards = results.json.get('value') #create an list of boards per stop
     table = "" #create empty table string to pass to browser
     for board in boards:
         table += '<tbody>'#start a new tbody per board
