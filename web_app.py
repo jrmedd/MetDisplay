@@ -31,6 +31,7 @@ def scrape_timetable(stop):
 def api_timetable(stop):
     results = requests.get("https://api.tfgm.com/odata/Metrolinks?$filter=StationLocation eq '%s'" % (stop),headers=api_header) #get all Metrolink board times
     boards = results.json().get('value') #create an list of boards per stop
+    boards = {v.get('AtcoCode'):v for v in boards}.values() #filter out duplicate boards per platform using the Atco codes
     table = "" #create empty table string to pass to browser
     for board in boards:
         table += '<tbody>'#start a new tbody per board
