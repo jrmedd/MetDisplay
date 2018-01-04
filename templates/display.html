@@ -11,11 +11,21 @@
     </table>
     <script src="{{ url_for('static', filename='jquery.min.js') }}"></script>
     <script>
-    window.setInterval(function(){
+    var timeout;
+    function autoTimeout() {
+      clearTimeout(timeout);
+      timeout = setTimeout(function(){ console.log('Refreshing'); refreshBoards(); }, 50000);
+    };
+    $("#timetable").on('webkitAnimationEnd oanimationend msAnimationEnd animationend', function() { //after any text is finished animating
+      refreshBoards();
+    });
+    function refreshBoards() {
       $.get(document.origin+'/timetable/{{stop}}'+location.search, function(data) { //grab the latest timetable
-  	     $("#timetable").html($.parseHTML(data)); //stick the data into a table
+         $("#timetable").html($.parseHTML(data)); //stick the data into a table
+         autoTimeout();
        });
-    }, 30000);//do it every 30 seconds
-    </script>
+    };
+    autoTimeout();
+  </script>
   </body>
 </html>

@@ -36,6 +36,7 @@ def api_timetable(stop):
     results = requests.get(API_URL % (stop), headers=API_HEADER) #get all Metrolink board times
     boards = results.json().get('value') #create an list of boards per stop
     boards = {board.get('AtcoCode'):board for board in boards}.values() #filter duplicate boards
+    messages = (', ').join(set([board.get('MessageBoard') for board in boards])) #get messages
     table = "" #create empty table string to pass to browser
     for board in boards:
         table += '<tbody>'#start a new tbody per board
@@ -49,6 +50,7 @@ def api_timetable(stop):
             if destination:
                 table += TABLE_ROW % (destination, wait) # make the row
         table += '</tbody>' #end the tbody
+    table += '<tbody><tr><td class="scroll" colspan="2"><p>%s</p></td></tr><tbody>' % (messages)
     return table
 
 if __name__ == '__main__':
