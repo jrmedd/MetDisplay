@@ -44,22 +44,22 @@ body {
   position: absolute;
   margin: 0;
   text-align: left;
-  transform: translateX(25%);
-  -moz-transform: translateX(25%);
-  -webkit-transform: translateX(25%);
+  transform: translateX(50%);
+  -moz-transform: translateX(50%);
+  -webkit-transform: translateX(50%);
   animation: scroll-left 20s linear;
   -moz-animation: scroll-left 20s linear;
   -webkit-animation: scroll-left 20s linear;
 }
 @keyframes scroll-left {
-  0%   { transform: translateX(25%); }
+  0%   { transform: translateX(50%); }
   100% { transform: translateX(-100%); }
 }
 @-moz-keyframes scroll-left {
- 0%   { -moz-transform: translateX(25%); }
+ 0%   { -moz-transform: translateX(50%); }
  100% { -moz-transform: translateX(-100%); }
 }
 @-webkit-keyframes scroll-left {
- 0%   { -webkit-transform: translateX(25%); }
+ 0%   { -webkit-transform: translateX(50%); }
  100% { -webkit-transform: translateX(-100%); }
 }
