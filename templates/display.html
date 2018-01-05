@@ -9,23 +9,11 @@
     <table id="timetable">
       {{ timetable | safe }}
     </table>
+    <div id="footer">
+      <div id="clock"></div>
+    </div>
     <script src="{{ url_for('static', filename='jquery.min.js') }}"></script>
-    <script>
-    var timeout;
-    function autoTimeout() {
-      clearTimeout(timeout);
-      timeout = setTimeout(function(){ console.log('Refreshing'); refreshBoards(); }, 50000);
-    };
-    $("#timetable").on('webkitAnimationEnd oanimationend msAnimationEnd animationend', function() { //after any text is finished animating
-      refreshBoards();
-    });
-    function refreshBoards() {
-      $.get(document.origin+'/timetable/{{stop}}'+location.search, function(data) { //grab the latest timetable
-         $("#timetable").html($.parseHTML(data)); //stick the data into a table
-         autoTimeout();
-       });
-    };
-    autoTimeout();
-  </script>
+    <script <script src="{{ url_for('static', filename='boardRefresh.js') }}"></script>
+    <script <script src="{{ url_for('static', filename='clock.js') }}"></script>
   </body>
 </html>

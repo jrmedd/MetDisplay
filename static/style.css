@@ -6,13 +6,13 @@
 body {
   font-family: 'Dot Matrix';
   background-color: #000000;
+  color: orange;
+  text-shadow: 1px 1px 2px  orange;
 }
 
 #timetable {
   font-size: 4em;
   width : 100%;
-  color: orange;
-  text-shadow: 1px 1px 2px  orange;
   line-height: 1.5em;
   table-layout: fixed;
 }
@@ -62,4 +62,17 @@ body {
 @-webkit-keyframes scroll-left {
  0%   { -webkit-transform: translateX(50%); }
  100% { -webkit-transform: translateX(-100%); }
+}
+
+#footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+#clock {
+  font-size: 2em;
+  margin: 0 auto;
+  text-align: center;
+  width: 12.5%;
 }
