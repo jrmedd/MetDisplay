@@ -7,8 +7,8 @@ APP = Flask(__name__)
 TFGM_API_KEY = os.environ.get('TFGM_API') #API subscription key available from developer.tfgm.com
 API_HEADER = {'Ocp-Apim-Subscription-Key':TFGM_API_KEY} #the http header for requesting data
 API_URL = "https://api.tfgm.com/odata/Metrolinks?$filter=StationLocation eq '%s'" #includes station
-TABLE_ROW = '<tr><td class="departure-destination">%s</td><td class="departure-wait">%s</td></tr>'
-MESSAGE_ROW = '<tbody><tr><td class="scroll" colspan="2"><p>%s</p></td></tr><tbody>'
+TABLE_ROW = '<tr><td class="destination">%s</td><td class="wait">%s</td></tr>' #trams
+MESSAGE_ROW = '<tbody><tr><td class="scroll" colspan="2"><p>%s</p></td></tr><tbody>' #messages
 
 @APP.route('/display/<stop>')
 def display(stop):

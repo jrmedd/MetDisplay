@@ -17,17 +17,13 @@ body {
   table-layout: fixed;
 }
 
-.departure-destination {
+.destination {
   text-align: left;
 }
 
-.departure-wait {
+.wait {
   letter-spacing: .15em;
   text-align: right;
-}
-
-.departure-carriages {
-  display: none;
 }
 
 .scroll {
