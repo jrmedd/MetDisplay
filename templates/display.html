@@ -6,11 +6,16 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
   </head>
   <body>
-    <table id="timetable">
-      {{ timetable | safe }}
-    </table>
-    <div id="footer">
+    <div id="header">
+      <img src="{{ url_for('static', filename='tfgm.svg') }}" alt="TfGM Icon">
+      <h1>Trams departing from {{stop}}</h1>
       <div id="clock"></div>
+      <hr>
+    </div>
+    <div>
+      <table id="timetable">
+        {{ timetable | safe }}
+      </table>
     </div>
     <script src="{{ url_for('static', filename='jquery.min.js') }}"></script>
     <script <script src="{{ url_for('static', filename='boardRefresh.js') }}"></script>

@@ -1,4 +1,9 @@
 @font-face {
+  font-family: 'PantographSans-Regular';
+  src: url('PantographSans-Regular.ttf');
+}
+
+@font-face {
   font-family: 'Dot Matrix';
   src: url('Dotmatrx.ttf');
 }
@@ -8,6 +13,28 @@ body {
   background-color: #000000;
   color: orange;
   text-shadow: 1px 1px 2px  orange;
+}
+
+#header  {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  max-height: 10vh;
+  font-family: 'PantographSans-Regular', sans-serif;
+  text-align: center;
+  color: #ffffff;
+  text-shadow: none;
+  font-size: 1.5em;
+  flex-wrap: wrap;
+  padding-bottom: 2em;
+}
+
+#clock {
+  min-width: 8%;
+}
+
+#header hr {
+  min-width: 100%;
 }
 
 #timetable {
@@ -58,17 +85,4 @@ body {
 @-webkit-keyframes scroll-left {
  0%   { -webkit-transform: translateX(50%); }
  100% { -webkit-transform: translateX(-100%); }
-}
-
-#footer {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-}
-
-#clock {
-  font-size: 2em;
-  margin: 0 auto;
-  text-align: center;
-  width: 12.5%;
 }
