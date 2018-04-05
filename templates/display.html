@@ -10,9 +10,8 @@
       <img src="{{ url_for('static', filename='tfgm.svg') }}" alt="TfGM Icon">
       <h1>Trams departing from {{stop}}</h1>
       <div id="clock"></div>
-      <hr>
     </div>
-    <div>
+    <div id="table-wrapper">
       <table id="timetable">
         {{ timetable | safe }}
       </table>
