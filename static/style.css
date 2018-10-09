@@ -1,3 +1,7 @@
+* {
+  cursor: none;
+}
+
 @font-face {
   font-family: 'PantographSans-Regular';
   src: url('PantographSans-Regular.ttf');
