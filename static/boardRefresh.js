@@ -7,7 +7,7 @@ $("#timetable").on('webkitAnimationEnd oanimationend msAnimationEnd animationend
   refreshBoards();
 });
 function refreshBoards() {
-  $.get(document.origin+'/timetable/'+window.location.pathname.split('/').slice(-1), function(data) { //grab the latest timetable
+  $.get(window.origin+'/timetable/'+window.location.pathname.split('/').slice(-1), function(data) { //grab the latest timetable
      $("#timetable").html($.parseHTML(data)); //stick the data into a table
      autoTimeout();
    });
