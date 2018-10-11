@@ -1,6 +1,6 @@
-* {
+/** {
   cursor: none;
-}
+}*/
 
 @font-face {
   font-family: 'PantographSans-Regular';
@@ -23,9 +23,9 @@ body {
 #header  {
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: space-around;
   font-family: 'PantographSans-Regular', sans-serif;
-  font-size: 1.5em;
+  font-size: 2em;
   text-align: center;
   color: #ffffff;
   background: #5d5d5d;
@@ -33,14 +33,16 @@ body {
   flex-wrap: wrap;
   border-bottom: 1px solid white;
   margin-bottom: 2em;
+  width: 100%;
+  height: 25vh;
 }
 
 #header img {
-  max-height: 10vh;
+  min-height: 100%;
 }
 
 #clock {
-  min-width: 8%;
+  min-width: 10%;
   font-size: 1.5em;
 }
 
