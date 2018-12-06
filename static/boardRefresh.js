@@ -13,3 +13,7 @@ function refreshBoards() {
    });
 };
 autoTimeout();
+
+setTimeout(function(){
+    location.reload();
+}, 1800000);
